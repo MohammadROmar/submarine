@@ -26,6 +26,7 @@ export default class Audios {
       if (!this.audioFolder) {
         this.audioFolder = this.debug.ui.addFolder("Audios");
       }
+
       return this.audioFolder;
     }
   }
