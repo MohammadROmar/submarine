@@ -13,7 +13,7 @@ import Resources from "./Utils/Resources.js";
 import Debug from "./Utils/Debug.js";
 
 import sources from "./sources.js";
-
+import submarine from "./World/Submarine.js"
 let instance = null;
 
 export default class Experience {
@@ -31,18 +31,18 @@ export default class Experience {
     this.canvas = canvas;
 
     /* Setup */
-    this.debug = new Debug();
+    
     this.sizes = new Sizes();
     this.time = new Time();
     this.scene = new THREE.Scene();
     this.resources = new Resources(sources);
     this.camera = new Camera();
     this.renderer = new Renderer();
-
+    
     this.world = new World();
-
+    this.debug = new Debug();
     this.audios = new Audios();
-
+    
     /* Resize Event */
     this.sizes.on("resize", () => {
       this.resize();
@@ -62,6 +62,10 @@ export default class Experience {
   update() {
     this.camera.update();
     this.renderer.update();
+   
+    if(this.world.submarine)
+    this.world.submarine.update();
+
   }
 
   destroy() {

@@ -16,5 +16,7 @@ export default class World {
       this.submarine = new Submarine();
       this.environment = new Environment();
     });
+
   }
+ 
 }
